@@ -1,2 +1,3 @@
-const LH = LH || {};
-
+// Bootstrap the app
+const LH = {};
+const Page = new HTMLimporter('js/');

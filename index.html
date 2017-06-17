@@ -5,10 +5,28 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Dependencies -->
+    <script src="js/dependencies/vue.js"></script>
+    <script src="js/dependencies/director.min.js"></script>
+    <script src="js/dependencies/HTMLimporter.js"></script>
 </head>
 <body>
+    <!-- Inject login page -->
+    <main id="app"></main>
+    
+    <!-- Bootstrap the app -->
+    <script src="js/app.js"></script>
 
-    <!-- Inject HTML templates -->
+    <!-- Components / views -->
+    <script src="js/pages/overview/overview.component.js"></script>
+    <script src="js/pages/profile/profile.component.js"></script>
 
+    <!-- Providers / services -->
+    <script src="js/providers/data.provider.js"></script>
+    <script src="js/providers/com.provider.js"></script>
+
+    <!-- Router -->
+    <script src="js/router.js"></script>
 </body>
 </html>
