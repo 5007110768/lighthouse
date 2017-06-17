@@ -1,14 +1,14 @@
 let Overview = LH.overviewComponent = {};
 
 Overview.init = function() {
-    Page.load('app', 'pages/overview/overview.html').then(
+    Page.load('pages/overview/overview.html').then(
         () =>  Overview.load(),
         (err) => { throw err; }
     );
 };
 
 Overview.load = function() {
-    console.log('Load overview page');
+    console.log('Overview.load');
 
     let test = new Vue({
         el: '#overview',

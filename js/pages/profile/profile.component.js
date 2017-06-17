@@ -1,19 +1,19 @@
 let Profile = LH.profileComponent = {};
 
 Profile.init = function() {
-    Page.load('app', 'pages/profile/profile.html').then(
+    Page.load('pages/profile/profile.html').then(
         () =>  Profile.load(),
         (err) => { throw err; }
     );
 };
 
 Profile.load = function() {
-    console.log('Load profile page');
+    console.log('Profile.load');
 
     let test = new Vue({
         el: '#profile',
         data: {
-            test: 'Hallo'
+            test: 'My profile'
         }
     });
 
