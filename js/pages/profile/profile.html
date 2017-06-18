@@ -1,4 +1,44 @@
-<div>
-    <h1>Profile</h1>
-    <h2 id="profile">{{ test }}</h2>
+<div id="profile-page">
+    <header>
+        <img alt="profile image"/>
+
+        <hgroup class="short-bio">
+            <h1>{{ name }}</h1>
+            <h2>{{ age }}</h2>
+        </hgroup>
+
+        <div class="nr-of-chats">
+            <i class="fa fa-comment" aria-hidden="true">
+                <span>1</span>
+            </i>
+        </div>
+    </header>
+
+    <div class="content">
+        <h1>Introductie</h1>
+        <p>{{ description }}</p>
+
+        <p>Houdt van: {{ preferences }}</p>
+
+        <button class="send-msg-btn">Verstuur bericht</button>
+
+        <hr/>
+
+        <div class="matches">
+            <h1>Matches</h1>
+            <img class="match" alt="match"/>
+
+            <p>Toon alle <i class="fa fa-chevron-right" aria-hidden="true"></i></p>
+        </div>
+
+        <hr/>
+
+        <div class="photos">
+            <h1>Foto's</h1>
+            <img class="photo" alt="photo"/>
+
+            <p>Toon alle <i class="fa fa-chevron-right" aria-hidden="true"></i></p>
+        </div>
+
+    </div>
 </div>

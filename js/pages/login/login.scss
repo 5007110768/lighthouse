@@ -1,0 +1,56 @@
+#login-page {
+  margin: auto;
+  width: 100%;
+
+  .content {
+    margin-top: 30px;
+    padding: 20px;
+
+    .logo {
+      width: 100%;
+      height: auto;
+    }
+
+    .login {
+        display: inline;
+        flex-direction: column;
+        width: 100%;
+
+        label {
+          color: $primary-blue;
+        }
+
+        input {
+          width: 100%;
+          height: 40px;
+          margin: 10px 0;
+          padding: 10px;
+          box-sizing: border-box;
+
+          border: 1px solid $primary-blue;
+
+          &:focus {
+            background-color: rgba(0,0,0,0.05);
+          }
+        }
+    }
+
+    .login-btn {
+      display: block;
+      margin: auto;
+      width: 150px;
+      height: 40px;
+      margin-bottom: 20px;
+
+      border: none;
+      background-color: $primary-blue;
+      color: #ffffff;
+      font-size: 0.8em;
+    }
+
+    .register-btn {
+      text-align: center;
+      color: $primary-blue;
+    }
+  }
+}

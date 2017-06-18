@@ -1,24 +1,19 @@
 let Profile = LH.profileComponent = {};
 
-Profile.init = function() {
+Profile.init = function(userId) {
     Page.load('pages/profile/profile.html').then(
-        () =>  Profile.load(),
+        () =>  Profile.load(userId),
         (err) => { throw err; }
     );
 };
 
-Profile.load = function() {
-    console.log('Profile.load');
+Profile.load = function(userId) {
+    console.log('Profile.load', 'userId:' + userId);
 
-    let test = new Vue({
-        el: '#profile',
-        data: {
-            test: 'My profile'
-        }
-    });
-
-    LH.DataProvider.getUserProfile().then(
-        (result) => { console.log('Result: ', result) },
+    LH.DataProvider.getUserProfile(userId).then(
+        (result) => {
+            console.log('Result: ', result)
+        },
         (err) => { throw err; }
     );
 };

@@ -3,6 +3,7 @@
 <head>
     <title>Lighthouse</title>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,8 +13,23 @@
     <script src="js/dependencies/HTMLimporter.js"></script>
 </head>
 <body>
-    <!-- Inject login page -->
-    <main id="app"></main>
+    <main id="wrapper">
+        <!-- Navigation -->
+        <nav id="navigation-bar">
+            <div class="back-btn nav-btn" onclick="LH.back()">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </div>
+
+            <h1 class="title">{{ title }}</h1>
+
+            <div class="settings-btn nav-btn" onclick="LH.navigate('#/settings')">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+            </div>
+        </nav>
+
+        <!-- Inject templates -->
+        <div id="app"></div>
+    </main>
 
     <!-- Bootstrap the app -->
     <script src="js/app.js"></script>
@@ -21,10 +37,10 @@
     <!-- Components -->
     <script src="js/pages/login/login.component.js"></script>
     <script src="js/pages/register/register.component.js"></script>
-    <script src="js/pages/overview/overview.component.js"></script>
     <script src="js/pages/profile/profile.component.js"></script>
     <script src="js/pages/chat/chat.component.js"></script>
     <script src="js/pages/settings/settings.component.js"></script>
+    <script src="js/pages/admin/admin.component.js"></script>
 
     <!-- Providers / services -->
     <script src="js/providers/data.provider.js"></script>

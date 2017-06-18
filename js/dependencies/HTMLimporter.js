@@ -25,7 +25,7 @@ let HTMLimporter = function(rootElement, rootDir) {
             };
 
             http.onerror = function () {
-                reject(this.response)
+                reject(this.response);
             };
 
             http.open('GET', rootDir + path);
