@@ -2,7 +2,7 @@ let Admin = LH.adminComponent = {};
 
 Admin.init = function() {
     Page.load('pages/admin/admin.html').then(
-        () =>  Login.load(),
+        () =>  Admin.load(),
         (err) => { throw err; }
     );
 };
@@ -10,6 +10,6 @@ Admin.init = function() {
 Admin.load = function() {
     console.log('Admin.load');
 
-
+    LH.navigation.titleBar.title = 'Admin paneel';
 };
 

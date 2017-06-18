@@ -10,5 +10,8 @@ Login.init = function() {
 Login.load = function() {
     console.log('Login.load');
 
+    let navOptions = { 'allowNavigation': false, 'allowSettings': false };
+
+    LH.navigation.titleBar.title = 'Log in';
 
 };

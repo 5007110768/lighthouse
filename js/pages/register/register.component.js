@@ -2,7 +2,7 @@ let Register = LH.registerComponent = {};
 
 Register.init = function() {
     Page.load('pages/register/register.html').then(
-        () =>  Login.load(),
+        () =>  Register.load(),
         (err) => { throw err; }
     );
 };
@@ -10,6 +10,6 @@ Register.init = function() {
 Register.load = function() {
     console.log('Register.load');
 
-
+    LH.navigation.titleBar.title = 'Registreer';
 };
 

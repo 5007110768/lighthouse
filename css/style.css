@@ -40,7 +40,12 @@ h1, h2, h3, h4 {
     #wrapper #navigation-bar .back-btn, #wrapper #navigation-bar .settings-btn {
       width: 50px;
       height: 50px; }
-    #wrapper #navigation-bar .title {
+      #wrapper #navigation-bar .back-btn.inactive, #wrapper #navigation-bar .settings-btn.inactive {
+        opacity: 0;
+        user-select: none;
+        -webkit-user-select: none;
+        pointer-events: none; }
+    #wrapper #navigation-bar #title {
       color: #ffffff;
       font-size: 1em;
       text-transform: uppercase; }
@@ -82,6 +87,38 @@ h1, h2, h3, h4 {
     #login-page .content .register-btn {
       text-align: center;
       color: #009cff; }
+
+#register-page {
+  margin: auto;
+  width: 100%; }
+  #register-page .content {
+    margin-top: 30px;
+    padding: 20px; }
+    #register-page .content h1, #register-page .content h2 {
+      color: #009cff; }
+    #register-page .content .account-details, #register-page .content .personal-details {
+      display: flex;
+      flex-direction: column;
+      width: 100%; }
+      #register-page .content .account-details label, #register-page .content .personal-details label {
+        color: #009cff; }
+      #register-page .content .account-details input, #register-page .content .account-details select, #register-page .content .personal-details input, #register-page .content .personal-details select {
+        width: 100%;
+        height: 40px;
+        margin: 10px 0;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #009cff; }
+        #register-page .content .account-details input:focus, #register-page .content .account-details select:focus, #register-page .content .personal-details input:focus, #register-page .content .personal-details select:focus {
+          background-color: rgba(0, 0, 0, 0.05); }
+    #register-page .content .register-btn {
+      display: inline-block;
+      width: 150px;
+      height: 40px;
+      border: none;
+      background-color: #009cff;
+      color: #ffffff;
+      font-size: 0.8em; }
 
 #profile-page {
   margin: auto;
@@ -181,6 +218,97 @@ h1, h2, h3, h4 {
       color: #009cff;
       text-align: right; }
 
+#chat-page {
+  margin: auto;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #009cff; }
+  #chat-page header {
+    display: flex;
+    align-items: center;
+    -webkit-align-self: center;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    width: 100%;
+    height: 50px;
+    background-color: #009cff;
+    color: #ffffff; }
+    #chat-page header img {
+      display: flex;
+      align-self: flex-start;
+      -webkit-align-self: flex-start;
+      width: 40px;
+      height: 60px;
+      margin: 10px 10px 0px 10px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+    #chat-page header h1 {
+      font-size: 1.2em;
+      font-weight: 400; }
+  #chat-page .content {
+    margin-top: 30px;
+    padding: 20px; }
+    #chat-page .content .messages {
+      margin-bottom: 50px; }
+      #chat-page .content .messages .message {
+        position: relative;
+        width: 100%;
+        min-height: 30px;
+        margin-bottom: 20px;
+        color: #ffffff; }
+        #chat-page .content .messages .message .text {
+          float: left;
+          display: inline-block;
+          max-width: 80%;
+          padding: 10px;
+          background-color: #009cff; }
+        #chat-page .content .messages .message:after {
+          content: '';
+          position: absolute;
+          bottom: -25px;
+          left: 10px;
+          display: block;
+          height: 0;
+          width: 0;
+          border-top: 20px solid #009cff;
+          border-right: 20px solid transparent; }
+        #chat-page .content .messages .message.owner .text {
+          float: right;
+          background-color: #d6efff;
+          color: #000000; }
+        #chat-page .content .messages .message.owner:after {
+          content: '';
+          position: absolute;
+          bottom: -25px;
+          left: auto;
+          right: 10px;
+          display: block;
+          border-top-color: #d6efff;
+          border-right: 0;
+          border-left: 20px solid transparent; }
+    #chat-page .content .type-area {
+      display: flex;
+      flex-direction: row;
+      -webkit-flex-direction: row;
+      width: 100%;
+      height: 50px;
+      margin-top: 20px; }
+      #chat-page .content .type-area textarea {
+        resize: none;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        border: 1px solid #009cff; }
+      #chat-page .content .type-area .send-msg-btn {
+        float: right;
+        width: 50px;
+        height: 100%;
+        margin-bottom: 20px;
+        border: none;
+        background-color: #009cff;
+        color: #ffffff;
+        font-size: 1em; }
+
 #settings-page {
   margin: auto;
   width: 100%;
@@ -207,6 +335,34 @@ h1, h2, h3, h4 {
         box-sizing: border-box;
         border: 1px solid #009cff; }
         #settings-page .content .personal-settings div input:focus {
+          background-color: rgba(0, 0, 0, 0.05); }
+
+#admin-page {
+  margin: auto;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #009cff; }
+  #admin-page .content {
+    margin-top: 30px;
+    padding: 20px; }
+    #admin-page .content h1 {
+      margin-bottom: 20px;
+      font-size: 1.2em;
+      color: #009cff; }
+      #admin-page .content h1 i {
+        margin-right: 10px; }
+    #admin-page .content .personal-settings div {
+      display: inline;
+      flex-direction: column;
+      width: 100%; }
+      #admin-page .content .personal-settings div input {
+        width: 100%;
+        height: 40px;
+        margin: 10px 0;
+        padding: 10px;
+        box-sizing: border-box;
+        border: 1px solid #009cff; }
+        #admin-page .content .personal-settings div input:focus {
           background-color: rgba(0, 0, 0, 0.05); }
 
 /*# sourceMappingURL=style.css.map */

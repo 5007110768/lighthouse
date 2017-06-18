@@ -10,6 +10,8 @@ Profile.init = function(userId) {
 Profile.load = function(userId) {
     console.log('Profile.load', 'userId:' + userId);
 
+    LH.navigation.titleBar.title = 'Profiel';
+
     LH.DataProvider.getUserProfile(userId).then(
         (result) => {
             console.log('Result: ', result)

@@ -16,13 +16,13 @@
     <main id="wrapper">
         <!-- Navigation -->
         <nav id="navigation-bar">
-            <div class="back-btn nav-btn" onclick="LH.back()">
+            <div class="back-btn nav-btn" onclick="nav.back()">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
             </div>
 
-            <h1 class="title">{{ title }}</h1>
+            <h1 id="title">{{ title }}</h1>
 
-            <div class="settings-btn nav-btn" onclick="LH.navigate('#/settings')">
+            <div class="settings-btn nav-btn" onclick="nav.navigate('#/settings')">
                 <i class="fa fa-cog" aria-hidden="true"></i>
             </div>
         </nav>

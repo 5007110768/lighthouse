@@ -13,8 +13,31 @@
             <input type="password"/>
         </div>
 
-        <button class="login-btn">Login</button>
-        <p class="register-btn">Registreer</p>
+        <hr/>
+
+        <h1>Persoonsgegevens</h1>
+
+        <div class="personal-details">
+            <label>Voornaam</label>
+            <input type="text"/>
+
+            <label>Achternaam</label>
+            <input type="text"/>
+
+            <label>Geboortejaar</label>
+            <input type="date"/>
+
+            <label>Geslacht</label>
+            <select>
+                <option value="male">Man</option>
+                <option value="female">Vrouw</option>
+            </select>
+
+            <label>Upload foto</label>
+            <input type="file"/>
+        </div>
+
+        <button class="register-btn" onclick="nav.navigate('#/profile/1')">Bevestig registratie</button>
 
     </div>
 </div>
