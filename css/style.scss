@@ -50,8 +50,18 @@ h1, h2, h3, h4 { margin: 0; }
     }
 
     .back-btn, .settings-btn {
+      text-align: center;
+      line-height: 2.1;
+
       width: 50px;
       height: 50px;
+
+      // Span needed to keep space-between working even if the elements inside are hidden
+      span {
+        width: 100%;
+        height: 100%;
+      }
+
 
       &.inactive {
         opacity: 0;

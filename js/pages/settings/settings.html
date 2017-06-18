@@ -4,16 +4,16 @@
 
         <div class="partner-preferences">
             <label>Reizen</label>
-            <input type="checkbox"/>
+            <input type="checkbox" v-bind:checked="travel"/>
 
             <label>Sporten</label>
-            <input type="checkbox"/>
+            <input type="checkbox" v-bind:checked="sports"/>
 
             <label>Films</label>
-            <input type="checkbox"/>
+            <input type="checkbox" v-bind:checked="movies"/>
 
             <label>Uitgaan</label>
-            <input type="checkbox"/>
+            <input type="checkbox" v-bind:checked="goingOut"/>
         </div>
 
         <button>Opslaan</button>

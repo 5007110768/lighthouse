@@ -2,15 +2,6 @@ const rootPage = '/profile';
 const nav = LH.navigation = {};
 let activePage = '';
 
-let navOptions = {
-    'login': { 'allowBack': false, 'allowSettings': false },
-    'register': { 'allowBack': true, 'allowSettings': false },
-    'profile': { 'allowBack': false, 'allowSettings': true },
-    'chat': { 'allowBack': true, 'allowSettings': true },
-    'settings': { 'allowBack': true, 'allowSettings': false },
-    'admin': { 'allowBack': true, 'allowSettings': true }
-};
-
 // Define routes / bootstrap app
 let routes = {
     '/': function(){
@@ -20,32 +11,26 @@ let routes = {
 
     '/login': function() {
         Login.init();
-        activePage = 'login';
     },
 
     '/register': function() {
         Register.init();
-        activePage = 'register';
     },
 
     '/profile/:userId': function(userId) {
         Profile.init(userId);
-        activePage = 'profile';
     },
 
     '/chat': function() {
         Chat.init();
-        activePage = 'chat';
     },
 
     '/settings': function() {
         Settings.init();
-        activePage = 'settings';
     },
 
     '/admin': function() {
         Admin.init();
-        activePage = 'admin';
     }
 
 };
@@ -65,26 +50,11 @@ LH.isAllowedAccess = function() {
 
 // Navigation
 nav.titleBar = new Vue({
-    el: '#title',
+    el: '#navigation-bar',
     data: {
-        title: 'Lighthouse'
-    },
-    updated: function() {
-        let back = document.getElementsByClassName('back-btn')[0];
-        let settings = document.getElementsByClassName('settings-btn')[0];
-
-        if (!navOptions[activePage].allowBack) {
-            back.classList.add('inactive');
-        } else {
-            if (back.classList.contains('inactive')) back.classList.remove('inactive');
-        }
-
-        if (!navOptions[activePage].allowSettings) {
-            settings.classList.add('inactive');
-        } else {
-            if (settings.classList.contains('inactive')) settings.classList.remove('inactive');
-        }
-
+        title: 'Lighthouse',
+        allowBack: false,
+        allowSettings: false
     }
 });
 

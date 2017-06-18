@@ -11,5 +11,7 @@ Chat.load = function() {
     console.log('Chat.load');
 
     LH.navigation.titleBar.title = 'Chat';
+    LH.navigation.titleBar.allowBack = true;
+    LH.navigation.titleBar.allowSettings = true;
 };
 

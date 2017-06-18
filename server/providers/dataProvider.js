@@ -40,7 +40,13 @@ DataProvider.getProfile = function(userId, callback, err) {
         'description': 'I dont know who you are. I dont know what you want',
         'interests': 'Killing people who hurt his daughter',
         'matches':['Xena', 'Wonder Woman', 'Jessica Jones'],
-        'photos':['image_01.jpg', 'image_02.jpg', 'image_03.jpg']
+        'photos':['image_01.jpg', 'image_02.jpg', 'image_03.jpg'],
+        'partnerPreferences': {
+            'travel': true,
+            'sports': false,
+            'movies': false,
+            'goingOut': true
+        }
     };
 
     // TODO: CRUD request
@@ -58,7 +64,15 @@ DataProvider.register = function(data, callback, err) {
         'lastName': 'Wick',
         'age': 53,
         'description': 'Most badass of all badasses',
-        'interests': 'Killing people who hurt his dog'
+        'interests': 'Killing people who hurt his dog',
+        'matches':['Xena', 'Wonder Woman', 'Jessica Jones'],
+        'photos':['image_01.jpg', 'image_02.jpg', 'image_03.jpg'],
+        'partnerPreferences': {
+            'travel': true,
+            'sports': true,
+            'movies': true,
+            'goingOut': false
+        }
     };
 
     // TODO: CRUD request

@@ -11,5 +11,7 @@ Admin.load = function() {
     console.log('Admin.load');
 
     LH.navigation.titleBar.title = 'Admin paneel';
+    LH.navigation.titleBar.allowBack = true;
+    LH.navigation.titleBar.allowSettings = true;
 };
 

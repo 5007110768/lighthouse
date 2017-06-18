@@ -10,11 +10,12 @@ Login.init = function() {
 Login.load = function() {
     console.log('Login.load');
 
-    let navOptions = { 'allowNavigation': false, 'allowSettings': false };
     LH.navigation.titleBar.title = 'Log in';
+    LH.navigation.titleBar.allowBack = false;
+    LH.navigation.titleBar.allowSettings = false;
 
     Login.data = new Vue({
-        el: '#login',
+        el: '#login-page',
         data: {
             'email': '',
             'password': ''

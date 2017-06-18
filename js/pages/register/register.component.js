@@ -11,6 +11,8 @@ Register.load = function() {
     console.log('Register.load');
 
     LH.navigation.titleBar.title = 'Registreer';
+    LH.navigation.titleBar.allowBack = false;
+    LH.navigation.titleBar.allowSettings = false;
 
     Register.data = new Vue({
         el: '#register',
