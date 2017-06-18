@@ -11,7 +11,7 @@
       height: auto;
     }
 
-    .login {
+    #login {
         display: inline;
         flex-direction: column;
         width: 100%;
@@ -30,7 +30,7 @@
           border: 1px solid $primary-blue;
 
           &:focus {
-            background-color: rgba(0,0,0,0.05);
+            background-color: #efefef;
           }
         }
     }

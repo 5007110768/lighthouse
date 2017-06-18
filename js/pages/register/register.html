@@ -2,42 +2,43 @@
     <div class="content">
         <h1>Accountgegevens</h1>
 
-        <div class="account-details">
-            <label>E-mailadres</label>
-            <input type="email"/>
+        <div id="register">
+            <div class="account-details">
+                <label>E-mailadres</label>
+                <input type="email" v-model:value="email"/>
 
-            <label>Wachtwoord</label>
-            <input type="password"/>
+                <label>Wachtwoord</label>
+                <input type="password" v-model:value="password"/>
 
-            <label>Herhaal wachtwoord</label>
-            <input type="password"/>
+                <label>Herhaal wachtwoord</label>
+                <input type="password" v-model:value="passwordConfirm"/>
+            </div>
+
+            <hr/>
+
+            <h1>Persoonsgegevens</h1>
+
+            <div class="personal-details">
+                <label>Voornaam</label>
+                <input type="text" v-model:value="firstName"/>
+
+                <label>Achternaam</label>
+                <input type="text"/ v-model:value="lastName">
+
+                <label>Geboortejaar</label>
+                <input type="date" v-model:value="dateOfBirth"/>
+
+                <label>Geslacht</label>
+                <select v-model:value="gender">
+                    <option value="male">Man</option>
+                    <option value="female">Vrouw</option>
+                </select>
+
+                <label>Upload foto</label>
+                <input type="file" id="file"/>
+            </div>
+
+            <button class="register-btn" onclick="Register.submitRequest()">Bevestig registratie</button>
         </div>
-
-        <hr/>
-
-        <h1>Persoonsgegevens</h1>
-
-        <div class="personal-details">
-            <label>Voornaam</label>
-            <input type="text"/>
-
-            <label>Achternaam</label>
-            <input type="text"/>
-
-            <label>Geboortejaar</label>
-            <input type="date"/>
-
-            <label>Geslacht</label>
-            <select>
-                <option value="male">Man</option>
-                <option value="female">Vrouw</option>
-            </select>
-
-            <label>Upload foto</label>
-            <input type="file"/>
-        </div>
-
-        <button class="register-btn" onclick="nav.navigate('#/profile/1')">Bevestig registratie</button>
-
     </div>
 </div>

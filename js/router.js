@@ -15,7 +15,7 @@ let navOptions = {
 let routes = {
     '/': function(){
         //TODO: reroute to /profile/currentUserId
-        //Profile.init();
+
     },
 
     '/login': function() {
@@ -51,12 +51,17 @@ let routes = {
 };
 
 // Check if user is logged in / has active token; if true, redirect to profile otherwise redirect to login
-/*LH.isLoggedIn = function() {
-    LH.DataProvider.getToken().then(
+LH.isLoggedIn = function() {
+    // TODO: Check if user has valid token
+    /*LH.DataProvider.getToken().then(
         (result) => window.location.href = '/#' + rootPage,
         (err) => window.location.href = '/#/login'
-    );
-};*/
+    );*/
+};
+
+LH.isAllowedAccess = function() {
+    // TODO: Check to see if user has right permissions for given request
+};
 
 // Navigation
 nav.titleBar = new Vue({
@@ -91,9 +96,7 @@ nav.back = function() {
     window.history.back();
 };
 
-nav.isBackAllowed = function() {
-
-};
-
 Router(routes).init();
 //LH.isLoggedIn();
+
+console.log('Lighthouse', LH);

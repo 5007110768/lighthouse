@@ -1,6 +1,6 @@
 <div id="profile-page">
     <header>
-        <img alt="profile image"/>
+        <img v-bind:src="photos[0]" alt="profile image"/>
 
         <hgroup class="short-bio">
             <h1>{{ name }}</h1>
@@ -18,7 +18,7 @@
         <h1>Introductie</h1>
         <p>{{ description }}</p>
 
-        <p>Houdt van: {{ preferences }}</p>
+        <p>Houdt van: {{ interests }}</p>
 
         <button class="send-msg-btn">Verstuur bericht</button>
 
@@ -26,7 +26,7 @@
 
         <div class="matches">
             <h1>Matches</h1>
-            <img class="match" alt="match"/>
+            <img class="match" v-bind:alt="match" v-for="match in matches"/>
 
             <p>Toon alle <i class="fa fa-chevron-right" aria-hidden="true"></i></p>
         </div>
@@ -35,10 +35,9 @@
 
         <div class="photos">
             <h1>Foto's</h1>
-            <img class="photo" alt="photo"/>
+            <img class="photo" alt="photo" v-for="photo in photos" v-bind:src="photo"/>
 
             <p>Toon alle <i class="fa fa-chevron-right" aria-hidden="true"></i></p>
         </div>
-
     </div>
 </div>

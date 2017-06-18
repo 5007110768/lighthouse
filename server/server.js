@@ -13,8 +13,7 @@ let server = http.createServer((req, res) => {
     let params = url.parse(req.url, true).query;
 
     if (req.method == 'GET') {
-        console.log('params:', params);
-
+        console.log(path);
        switch(path) {
            case '/token':
                console.log('Token');
@@ -22,8 +21,12 @@ let server = http.createServer((req, res) => {
                dataProvider.getToken('',
                    (result) => {
                        res.write(result.toJSON());
+                       res.end();
                    },
-                   (err) => { console.error('Error:', err); }
+                   (err) => {
+                       console.error('Error:', err);
+                       res.end();
+                   }
                );
                break;
 
@@ -32,43 +35,72 @@ let server = http.createServer((req, res) => {
 
                dataProvider.getProfile('',
                    (result) => {
-                       res.write(result.toJSON());
+                       res.writeHead('200', 'User profile retrieval success');
+                       res.end(result);
                    },
-                   (err) => { console.error('Error:', err); }
+                   (err) => {
+                       console.error('Error:', err);
+                       res.writeHead(401, 'Access denied');
+                       res.end();
+                   }
                );
                break;
        }
-
-        res.end();
     }
 
     if (req.method == 'POST') {
-        console.log('data:', req.body);
 
         switch(path) {
             case '/auth':
                 console.log('Authenticate');
 
-                dataProvider.authenticate('',
-                    (result) => {
-                        res.write(result.toJSON());
-                    },
-                    (err) => { console.error('Error:', err); }
-                );
+                let _hash = [];
+
+                req.on('data', (chunk) => _hash.push(chunk));
+
+                req.on('end', () => {
+                    _hash = _hash.toString();
+                    console.log(_hash);
+                    dataProvider.authenticate(_hash,
+                        (result) => {
+                            // TODO: if token is still valid, send back the same token.
+
+                            res.writeHead(200, 'Access granted', {'x-data-token': 'thisIsAPlaceholderToken'});
+                            res.end(result);
+                        },
+                        (err) => {
+                            console.error('Error:', err);
+                            res.writeHead(401, 'Access denied');
+                            res.end(err);
+                        }
+                    );
+                });
                 break;
 
             case '/register':
                 console.log('Register');
 
-                dataProvider.register('',
-                    (result) => {
-                        res.write(result.toJSON());
-                    },
-                    (err) => { console.error('Error:', err); }
-                );
+                let _data = [];
+
+                req.on('data', (chunk) => _data.push(chunk));
+
+                req.on('end', () => {
+                    _data = JSON.parse(_data.toString());
+                    console.log('data', _data);
+                    dataProvider.register(_data,
+                        (result) => {
+                            res.writeHead(200, 'Account successfully created', {'x-data-token': 'thisIsAPlaceholderToken'});
+                            res.end(result);
+                        },
+                        (err) => {
+                            console.error('Error:', err);
+                            res.writeHead(401, 'Access denied');
+                            res.end(err);
+                        }
+                    );
+                });
                 break;
         }
-
     }
 
 }).listen(port);

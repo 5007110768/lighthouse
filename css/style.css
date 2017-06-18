@@ -59,21 +59,21 @@ h1, h2, h3, h4 {
     #login-page .content .logo {
       width: 100%;
       height: auto; }
-    #login-page .content .login {
+    #login-page .content #login {
       display: inline;
       flex-direction: column;
       width: 100%; }
-      #login-page .content .login label {
+      #login-page .content #login label {
         color: #009cff; }
-      #login-page .content .login input {
+      #login-page .content #login input {
         width: 100%;
         height: 40px;
         margin: 10px 0;
         padding: 10px;
         box-sizing: border-box;
         border: 1px solid #009cff; }
-        #login-page .content .login input:focus {
-          background-color: rgba(0, 0, 0, 0.05); }
+        #login-page .content #login input:focus {
+          background-color: #efefef; }
     #login-page .content .login-btn {
       display: block;
       margin: auto;
@@ -110,7 +110,7 @@ h1, h2, h3, h4 {
         box-sizing: border-box;
         border: 1px solid #009cff; }
         #register-page .content .account-details input:focus, #register-page .content .account-details select:focus, #register-page .content .personal-details input:focus, #register-page .content .personal-details select:focus {
-          background-color: rgba(0, 0, 0, 0.05); }
+          background-color: #efefef; }
     #register-page .content .register-btn {
       display: inline-block;
       width: 150px;

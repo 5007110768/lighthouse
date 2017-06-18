@@ -4,7 +4,7 @@ LH.ComProvider = {};
 LH.ComProvider.request = function(request) {
     return new Promise(function (resolve, reject) {
         let http = new XMLHttpRequest();
-        let url = request.params ? request.url + '?' + request.params + '&' + request.token : request.url + '?' + request.token;
+        let data = request.data ? request.data : null;
 
         http.onload = function () {
             if (this.status >= 200) {
@@ -17,7 +17,7 @@ LH.ComProvider.request = function(request) {
         http.onerror = function () {
             reject(this.response)
         };
-        http.open(request.method, url);
-        http.send();
+        http.open(request.method, request.url);
+        http.send(data);
     });
 };

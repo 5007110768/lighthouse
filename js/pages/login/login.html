@@ -2,15 +2,15 @@
     <div class="content">
         <img src="images/logo_lighthouse_01.svg" class="logo" alt="logo"/>
 
-        <div class="login">
+        <div id="login">
             <label>E-mailadres</label>
-            <input type="email"/>
+            <input type="email" v-model:value="email"/>
 
             <label>Wachtwoord</label>
-            <input type="password"/>
+            <input type="password" v-model:value="password"/>
         </div>
 
-        <button class="login-btn" onclick="nav.navigate('#/profile/1')">Login</button>
+        <button class="login-btn" onclick="Login.submitRequest()">Login</button>
         <p class="register-btn" onclick="nav.navigate('#/register')">Registreer</p>
 
     </div>
