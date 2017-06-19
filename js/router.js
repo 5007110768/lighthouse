@@ -1,12 +1,14 @@
 const rootPage = '/profile';
 const nav = LH.navigation = {};
-let activePage = '';
+const active = LH.active = {};
 
-// Define routes / bootstrap app
+active.user = null;
+active.page = null;
+
+// Define routes
 let routes = {
     '/': function(){
-        //TODO: reroute to /profile/currentUserId
-
+        // TODO: reroute to /profile/currentUserId
     },
 
     '/login': function() {
@@ -32,7 +34,6 @@ let routes = {
     '/admin': function() {
         Admin.init();
     }
-
 };
 
 // Check if user is logged in / has active token; if true, redirect to profile otherwise redirect to login
