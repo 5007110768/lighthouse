@@ -15,6 +15,7 @@ LH.DataProvider.getToken = function() {
     return LH.ComProvider.request(request);
 };
 
+// Returns current user
 LH.DataProvider.authenticate = function(hash) {
     let request = {
         url: baseURL + '/auth' + '?token=' + _token,
@@ -25,6 +26,7 @@ LH.DataProvider.authenticate = function(hash) {
     return LH.ComProvider.request(request);
 };
 
+// Create user object on server
 LH.DataProvider.register = function(data) {
     let request = {
       url: baseURL + '/register',
@@ -35,6 +37,7 @@ LH.DataProvider.register = function(data) {
     return LH.ComProvider.request(request);
 };
 
+// Returns any user
 LH.DataProvider.getUserProfile = function(userId) {
     let request = {
         url: baseURL + '/user-profile?userId=' + userId + '&token=' + _token,

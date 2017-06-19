@@ -1,44 +1,45 @@
 <div id="register-page">
     <div class="content">
         <h1>Accountgegevens</h1>
+        <form onsubmit="Register.submitRequest()">
+            <div id="register">
+                <div class="account-details">
+                    <label>E-mailadres</label>
+                    <input type="email" v-model:value="email" required/>
 
-        <div id="register">
-            <div class="account-details">
-                <label>E-mailadres</label>
-                <input type="email" v-model:value="email"/>
+                    <label>Wachtwoord</label>
+                    <input type="password" v-model:value="password" required/>
 
-                <label>Wachtwoord</label>
-                <input type="password" v-model:value="password"/>
+                    <label>Herhaal wachtwoord</label>
+                    <input type="password" v-model:value="passwordConfirm" required/>
+                </div>
 
-                <label>Herhaal wachtwoord</label>
-                <input type="password" v-model:value="passwordConfirm"/>
+                <hr/>
+
+                <h1>Persoonsgegevens</h1>
+
+                <div class="personal-details">
+                    <label>Voornaam</label>
+                    <input type="text" v-model:value="firstName" required/>
+
+                    <label>Achternaam</label>
+                    <input type="text" v-model:value="lastName" required/>
+
+                    <label>Geboortejaar</label>
+                    <input type="date" v-model:value="dateOfBirth" required/>
+
+                    <label>Geslacht</label>
+                    <select v-model:value="gender" required>
+                        <option value="male">Man</option>
+                        <option value="female">Vrouw</option>
+                    </select>
+
+                    <label>Upload foto</label>
+                    <input type="file" id="file" required/>
+                </div>
+
+                <button class="register-btn">Bevestig registratie</button>
             </div>
-
-            <hr/>
-
-            <h1>Persoonsgegevens</h1>
-
-            <div class="personal-details">
-                <label>Voornaam</label>
-                <input type="text" v-model:value="firstName"/>
-
-                <label>Achternaam</label>
-                <input type="text"/ v-model:value="lastName">
-
-                <label>Geboortejaar</label>
-                <input type="date" v-model:value="dateOfBirth"/>
-
-                <label>Geslacht</label>
-                <select v-model:value="gender">
-                    <option value="male">Man</option>
-                    <option value="female">Vrouw</option>
-                </select>
-
-                <label>Upload foto</label>
-                <input type="file" id="file"/>
-            </div>
-
-            <button class="register-btn" onclick="Register.submitRequest()">Bevestig registratie</button>
-        </div>
+        </form>
     </div>
 </div>

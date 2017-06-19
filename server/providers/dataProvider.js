@@ -66,7 +66,7 @@ DataProvider.register = function(data, callback, err) {
         'description': 'Most badass of all badasses',
         'interests': 'Killing people who hurt his dog',
         'matches':['Xena', 'Wonder Woman', 'Jessica Jones'],
-        'photos':['image_01.jpg', 'image_02.jpg', 'image_03.jpg'],
+        'photos':[data.photos[0]],
         'partnerPreferences': {
             'travel': true,
             'sports': true,

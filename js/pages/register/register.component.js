@@ -42,26 +42,38 @@ Register.submitRequest = function() {
         'email': Register.data.email,
         'firstName': Register.data.firstName,
         'lastName': Register.data.lastName,
-        'dateOfBirth': Register.data.dateOfBirth,
         'gender': Register.data.gender,
-        'imgData': null
+        'dateOfBirth': Register.data.dateOfBirth,
+        'description': '',
+        'interests': [],
+        'partnerPreferences': [],
+        'photos': [],
+        'matches': []
+
     };
 
     let file = document.getElementById('file').files[0];
-    data.imgData = new Blob([file]);
+    let reader = new FileReader();
 
-    LH.DataProvider.register(data).then(
-        (result) => {
-            console.log('result:', result);
+    reader.onloadend = function() {
+        data.photos[0] = reader.result;
+        console.log('photos', data.photos);
+        LH.DataProvider.register(data).then(
+            (result) => {
+                console.log('result:', result);
 
-            let data = JSON.parse(result);
-            nav.navigate('#/profile/' + data.userId);
+                let data = JSON.parse(result);
+                nav.navigate('#/profile/' + data.userId);
 
-        },
-        (err) => {
-            alert('Unable to log in:', err);
-            throw 'err';
-        }
-    );
+            },
+            (err) => {
+                alert('Unable to log in:', err);
+                throw 'err';
+            }
+        );
+
+    };
+
+    reader.readAsDataURL(file);
 };
 
