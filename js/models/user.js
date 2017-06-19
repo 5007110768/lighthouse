@@ -1,8 +1,9 @@
-let User = function(id, email, firstName, lastName, age, description, interests, partnerPreferences, photos, matches) {
+let User = function(id, email, firstName, lastName, gender, age, description, interests, partnerPreferences, photos, matches) {
     this.id  = id; // Number
     this.email = email; // String
     this.firstName = firstName; // String
     this.lastName = lastName; // String
+    this.gender = gender; // String
     this.age = age; // Number
     this.description = description; // String
     this.interests = interests; // Interests object
