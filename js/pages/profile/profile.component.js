@@ -18,25 +18,20 @@ Profile.load = function(userId) {
     Profile.data = new Vue({
         el: '#profile-page',
         data: {
-            'name': '',
-            'age': 0,
-            'description': '',
-            'interests': '',
+            'name': 'N/A',
+            'age': 'N/A',
+            'description': 'N/A',
+            'interests': [],
             'matches': [],
             'photos': [],
-            'partnerPreferences': {
-                'travel': false,
-                'sports': false,
-                'movies': false,
-                'goingOut': false
-            }
+            'partnerPreferences': []
         }
     });
 
     // TODO: DataProvider.getUserProfile needs to return in the DataProvider, then return a new promise to be thennable
     LH.DataProvider.getUserProfile(userId).then(
         (result) => {
-            let data = JSON.parse(result);
+            let data = JSON.parse(result[0]);
             console.log('Result: ', data);
 
             // Assign retrieved data to DOM through vue

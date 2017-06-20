@@ -3,7 +3,7 @@ LH.DataProvider = {};
 let baseURL = 'http://localhost:3001';
 let _token = localStorage.getItem('token') || 'MySpecialToken';
 
-LH.DataProvider.data = JSON.parse(localStorage.getItem('_tmpData')) || {};
+LH.DataProvider.activeUserId = '';
 
 // Requests for server
 LH.DataProvider.getToken = function() {

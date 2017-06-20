@@ -23,6 +23,8 @@ Login.load = function() {
     });
 };
 
+
+
 Login.submitRequest = function() {
     console.log('Login.submitRequest');
 
@@ -33,9 +35,11 @@ Login.submitRequest = function() {
 
     LH.DataProvider.authenticate(_hash).then(
         (result) => {
-            let data = JSON.parse(result);
+            let data = JSON.parse(result[0]);
             console.log('result:', data);
-            nav.navigate('#/profile/' + data.userId);
+            LH.DataProvider.activeUserId = data.ID;
+
+            nav.navigate('#/profile/' + LH.DataProvider.activeUserId);
 
         },
         (err) => {

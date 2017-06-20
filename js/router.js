@@ -1,9 +1,7 @@
 const rootPage = '/profile';
 const nav = LH.navigation = {};
-const active = LH.active = {};
 
-active.user = null;
-active.page = null;
+nav.activePage = null;
 
 // Define routes
 let routes = {
