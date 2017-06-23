@@ -31,7 +31,8 @@ Profile.load = function(userId) {
     // TODO: DataProvider.getUserProfile needs to return in the DataProvider, then return a new promise to be thennable
     LH.DataProvider.getUserProfile(userId).then(
         (result) => {
-            let data = JSON.parse(result[0]);
+            let data = JSON.parse(result);
+            data = data[0];
             console.log('Result: ', data);
 
             // Assign retrieved data to DOM through vue
@@ -40,7 +41,7 @@ Profile.load = function(userId) {
             Profile.data.description = data.description;
             Profile.data.interests = data.interests;
             Profile.data.matches = data.matches;
-            Profile.data.photos = data.photos;
+            //Profile.data.photos = data.photos;
             Profile.data.partnerPreferences = data.partnerPreferences;
         },
         (err) => { throw err; }

@@ -35,9 +35,10 @@ Login.submitRequest = function() {
 
     LH.DataProvider.authenticate(_hash).then(
         (result) => {
-            let data = JSON.parse(result[0]);
+            console.log(result);
+            let data = JSON.parse(result);
             console.log('result:', data);
-            LH.DataProvider.activeUserId = data.ID;
+            LH.DataProvider.activeUserId = data[0].ID;
 
             nav.navigate('#/profile/' + LH.DataProvider.activeUserId);
 
