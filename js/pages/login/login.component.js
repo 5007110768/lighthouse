@@ -24,7 +24,6 @@ Login.load = function() {
 };
 
 
-
 Login.submitRequest = function() {
     console.log('Login.submitRequest');
 
@@ -35,12 +34,19 @@ Login.submitRequest = function() {
 
     LH.DataProvider.authenticate(_hash).then(
         (result) => {
+            result = JSON.parse(result);
             console.log(result);
-            let data = JSON.parse(result);
-            console.log('result:', data);
-            LH.DataProvider.activeUserId = data[0].ID;
 
-            nav.navigate('#/profile/' + LH.DataProvider.activeUserId);
+            // Set server response data to user object, only using the user id and permissionLvl
+            LH.DataProvider.activeUser = new User();
+            LH.DataProvider.activeUser.set(result.data[0]);
+            LH.DataProvider.saveActiveUser();
+
+            // Save new token in local storage
+            LH.DataProvider.saveToken(result._token);
+
+            console.log('Active user id: ' + LH.DataProvider.activeUser.id, 'permissionLvl: ' + LH.DataProvider.activeUser.permission);
+            nav.navigate('#/profile/' + LH.DataProvider.activeUser.id);
 
         },
         (err) => {

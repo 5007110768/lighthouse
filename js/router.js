@@ -18,6 +18,21 @@ let routes = {
     },
 
     '/profile/:userId': function(userId) {
+        console.log('Stored token: ', LH.DataProvider.tokenIsValid());
+
+        if (!LH.DataProvider.tokenIsValid()) {
+            alert('Token expired, please log in again');
+            window.location.href = '#/login';
+            return;
+        }
+
+        if (!LH.DataProvider.activeUser) LH.DataProvider.loadActiveUser();
+
+        if (!LH.DataProvider.activeUser.isAllowedAccess(userId)) {
+            alert('You do not have permission to view this page');
+            window.location.href = '#/profile/' + LH.DataProvider.activeUser.id;
+        }
+
         Profile.init(userId);
     },
 

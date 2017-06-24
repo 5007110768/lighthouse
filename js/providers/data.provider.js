@@ -1,9 +1,47 @@
 LH.DataProvider = {};
 
+let self = this;
 let baseURL = 'http://localhost:3001';
-let _token = localStorage.getItem('token') || 'MySpecialToken';
+let _token;
 
-LH.DataProvider.activeUserId = '';
+LH.DataProvider.activeUser = null;
+
+LH.DataProvider.loadActiveUser = function() {
+    let data = JSON.parse(localStorage.getItem('user'));
+    LH.DataProvider.activeUser = new User();
+    LH.DataProvider.activeUser.id = data.id;
+    LH.DataProvider.activeUser.permission = data.permission;
+};
+
+LH.DataProvider.saveActiveUser = function() {
+    localStorage.setItem('user', JSON.stringify(LH.DataProvider.activeUser));
+    LH.DataProvider.loadActiveUser();
+};
+
+
+LH.DataProvider.loadToken = function() {
+    _token = localStorage.getItem('token');
+};
+
+LH.DataProvider.saveToken = function(_token) {
+    localStorage.setItem('token', _token);
+    LH.DataProvider.loadToken();
+};
+
+LH.DataProvider.tokenIsValid = function() {
+    LH.DataProvider.loadToken();
+    if (!_token) return false;
+
+    let tokenInMs = parseInt(atob(_token));
+    let now = new Date().getTime();
+    let expiration = 3600*24*7*1000; // 7 days
+    console.log('tokenInMs: ' + tokenInMs);
+    if ((tokenInMs + expiration) > now) return true;
+
+    return false;
+};
+
+
 
 // Requests for server
 LH.DataProvider.getToken = function() {

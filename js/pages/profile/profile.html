@@ -1,9 +1,9 @@
 <div id="profile-page">
     <header>
-        <img v-bind:src="photos[0]" alt="profile image"/>
+        <!--<img v-bind:src="photos[0]" alt="profile image"/>-->
 
         <hgroup class="short-bio">
-            <h1>{{ name }}</h1>
+            <h1>{{ firstName + ' ' + lastName }}</h1>
             <h2>{{ age }}</h2>
         </hgroup>
 
