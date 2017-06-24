@@ -7,7 +7,8 @@ LH.ComProvider.request = function(request) {
         let data = request.data ? request.data : null;
 
         http.onload = function () {
-            if (this.status >= 200) {
+            console.log(this, this.status);
+            if (this.status >= 200 && this.status < 400) {
                 resolve(this.response);
             } else {
                 reject(this.response);

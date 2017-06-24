@@ -66,10 +66,9 @@ Register.submitRequest = function() {
 
                 // Because an sql INSERT response does not respond with the user object, but a response object
                 let responseData = { 'ID': result.data.insertId, 'permissionLvl': data.permissionLvl };
-                console.log('responseData', responseData);
+
                 // Set server response data to user object, only using the user id and permissionLvl
-                LH.DataProvider.activeUser = new User();
-                LH.DataProvider.activeUser.set(responseData);
+                LH.DataProvider.activeUser = new User().set(responseData);
                 LH.DataProvider.saveActiveUser();
 
                 // Save new token in local storage

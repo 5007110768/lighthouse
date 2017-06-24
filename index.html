@@ -22,7 +22,7 @@
 
             <h1 id="title">{{ title }}</h1>
 
-            <div class="settings-btn nav-btn" onclick="nav.navigate('#/settings')">
+            <div class="settings-btn nav-btn" onclick="nav.navigate('#/profile/' + LH.DataProvider.activeUser.id + '/settings')">
                 <span v-if="allowSettings"><i class="fa fa-cog" aria-hidden="true"></i></span>
             </div>
         </nav>

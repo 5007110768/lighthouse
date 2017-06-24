@@ -27,47 +27,33 @@ let routes = {
     '/profile/:userId': function(userId) {
         console.log('Stored token: ', LH.DataProvider.tokenIsValid());
 
-        if (!LH.DataProvider.tokenIsValid()) {
-            alert('Token expired, please log in again');
-            nav.navigate('#/login');
-            return;
-        }
-
-        if (!LH.DataProvider.activeUser) LH.DataProvider.loadActiveUser();
-
-        if (!LH.DataProvider.activeUser.isAllowedAccess(userId)) {
-            alert('You do not have permission to view this page');
-            nav.navigate('#/profile/' + LH.DataProvider.activeUser.id);
-            return;
-        }
-
-        Profile.init(userId);
+        LH.DataProvider.isLoggedIn(userId).then(
+            (result) => {
+                console.log(result);
+                Profile.init(userId);
+            },
+            (err) => { console.log(err) }
+        );
     },
 
     '/chat': function() {
         Chat.init();
     },
 
-    '/settings': function() {
-        Settings.init();
+    '/profile/:userId/settings': function(userId) {
+        LH.DataProvider.isLoggedIn(userId).then(
+            (result) => {
+                console.log(result);
+                Settings.init(userId);
+            },
+            (err) => { console.log(err) }
+        );
+
     },
 
     '/admin': function() {
         Admin.init();
     }
-};
-
-// Check if user is logged in / has active token; if true, redirect to profile otherwise redirect to login
-LH.isLoggedIn = function() {
-    // TODO: Check if user has valid token
-    /*LH.DataProvider.getToken().then(
-        (result) => window.location.href = '/#' + rootPage,
-        (err) => window.location.href = '/#/login'
-    );*/
-};
-
-LH.isAllowedAccess = function() {
-    // TODO: Check to see if user has right permissions for given request
 };
 
 // Navigation

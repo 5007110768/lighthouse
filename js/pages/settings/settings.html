@@ -4,16 +4,16 @@
 
         <div class="partner-preferences">
             <label>Reizen</label>
-            <input type="checkbox" v-bind:checked="travel"/>
+            <input type="checkbox" v-model:checked="interests.travel"/>
 
             <label>Sporten</label>
-            <input type="checkbox" v-bind:checked="sports"/>
+            <input type="checkbox" v-model:checked="interests.sports"/>
 
             <label>Films</label>
-            <input type="checkbox" v-bind:checked="movies"/>
+            <input type="checkbox" v-model:checked="interests.movies"/>
 
             <label>Uitgaan</label>
-            <input type="checkbox" v-bind:checked="goingOut"/>
+            <input type="checkbox" v-model:checked="interests.goingOut"/>
         </div>
 
         <button>Opslaan</button>
@@ -25,30 +25,31 @@
         <div class="personal-settings">
             <div>
                 <label>E-mailadres</label>
-                <input type="email"/>
+                <input type="email" v-model:value="email"/>
             </div>
 
             <div>
                 <label>Oud wachtwoord</label>
-                <input type="password"/>
+                <input type="password" v-model:value="oldPassword"/>
             </div>
 
             <div>
                 <label>Nieuw wachtwoord</label>
-                <input type="password"/>
+                <input type="password" v-model:value="newPassword"/>
             </div>
 
             <div>
                 <label>Herhaal nieuw wachtwoord</label>
-                <input type="password"/>
+                <input type="password" v-model:value="newPasswordConfirm"/>
             </div>
 
-            <button>Opslaan</button>
+            <button class="change-account-btn" onclick="Settings.changeAccountDetails()">Verander wachtwoord</button>
         </div>
 
         <hr/>
 
         <h1 onclick="nav.navigate('#/admin')"><i class="fa fa-universal-access" aria-hidden="true"></i>Admin paneel</h1>
         <h1 onclick="Settings.logOut()"><i class="fa fa-sign-out" aria-hidden="true"></i>Uitloggen</h1>
+        <h1 onclick="Settings.deleteAccount()"><i class="fa fa-trash-o" aria-hidden="true"></i>Account verwijderen</h1>
     </div>
 </div>

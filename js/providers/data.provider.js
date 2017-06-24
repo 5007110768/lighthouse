@@ -18,7 +18,6 @@ LH.DataProvider.saveActiveUser = function() {
     LH.DataProvider.loadActiveUser();
 };
 
-
 LH.DataProvider.loadToken = function() {
     _token = localStorage.getItem('token');
 };
@@ -41,16 +40,27 @@ LH.DataProvider.tokenIsValid = function() {
     return false;
 };
 
+// Check if user is logged in / has active token; if true, redirect to target otherwise redirect to login
+LH.DataProvider.isLoggedIn = function(userId) {
+    return new Promise((resolve, reject) => {
 
+        if (!LH.DataProvider.tokenIsValid()) {
+            alert('Token expired, please log in again');
+            nav.navigate('#/login');
+            reject('Token expired');
+        }
 
-// Requests for server
-LH.DataProvider.getToken = function() {
-    let request = {
-        url: baseURL + '/token',
-        method: 'GET'
-    };
+        if (!LH.DataProvider.activeUser) LH.DataProvider.loadActiveUser();
 
-    return LH.ComProvider.request(request);
+        if (!LH.DataProvider.activeUser.isAllowedAccess(userId)) {
+            alert('You do not have permission to view this page');
+            nav.navigate('#/profile/' + LH.DataProvider.activeUser.id);
+            reject('No permission to view page');
+        }
+
+        resolve('User is logged in');
+
+    });
 };
 
 // Returns current user
@@ -79,6 +89,27 @@ LH.DataProvider.register = function(data) {
 LH.DataProvider.getUserProfile = function(userId) {
     let request = {
         url: baseURL + '/user-profile?userId=' + userId + '&token=' + _token,
+        method: 'GET'
+    };
+
+    return LH.ComProvider.request(request);
+};
+
+// Change account settings
+LH.DataProvider.changeAccountSettings = function(data) {
+    let request = {
+        url: baseURL + '/change-account-settings',
+        method: 'POST',
+        data: JSON.stringify(data)
+    };
+
+    return LH.ComProvider.request(request);
+};
+
+// Delete account
+LH.DataProvider.deleteAccount = function(userId) {
+    let request = {
+        url: baseURL + '/delete-account?userId=' + userId,
         method: 'GET'
     };
 

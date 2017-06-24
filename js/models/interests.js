@@ -1,8 +1,15 @@
 let Interests = function(travel, sports, movies, goingOut) {
+    let self = this;
+
     this.travel = travel;
     this.sports = sports;
     this.movies = movies;
     this.goingOut = goingOut;
-};
 
-// Hier hhoef je denk ik geen tabel voor te maken. Is puur een model voor de clientside. mmmm
+    this.set = function(serverResponseObject) {
+        serverResponseObject.travel = self.travel;
+        serverResponseObject.sports = self.sports;
+        serverResponseObject.movies = self.movies;
+        serverResponseObject.goingOut = self.goingOut;
+    };
+};
