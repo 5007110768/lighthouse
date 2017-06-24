@@ -28,7 +28,7 @@ Login.submitRequest = function() {
     console.log('Login.submitRequest');
 
     //TODO: app secret is 'cmdamsterdam' :: REMOVE BEFORE PRODUCTION ::
-
+ 
     let _hash = Login.data.email + Login.data.password + 'cmdamsterdam';
     console.log('hash', _hash);
 

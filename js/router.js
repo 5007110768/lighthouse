@@ -6,7 +6,14 @@ nav.activePage = null;
 // Define routes
 let routes = {
     '/': function(){
-        // TODO: reroute to /profile/currentUserId
+        LH.DataProvider.loadActiveUser();
+        console.log('active user: ', LH.DataProvider.activeUser);
+
+        if (LH.DataProvider.activeUser) {
+            nav.navigate('#/profile/' + LH.DataProvider.activeUser.id);
+        } else {
+            nav.navigate('#/login');
+        }
     },
 
     '/login': function() {
@@ -22,7 +29,7 @@ let routes = {
 
         if (!LH.DataProvider.tokenIsValid()) {
             alert('Token expired, please log in again');
-            window.location.href = '#/login';
+            nav.navigate('#/login');
             return;
         }
 
@@ -30,7 +37,8 @@ let routes = {
 
         if (!LH.DataProvider.activeUser.isAllowedAccess(userId)) {
             alert('You do not have permission to view this page');
-            window.location.href = '#/profile/' + LH.DataProvider.activeUser.id;
+            nav.navigate('#/profile/' + LH.DataProvider.activeUser.id);
+            return;
         }
 
         Profile.init(userId);

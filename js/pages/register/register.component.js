@@ -48,7 +48,8 @@ Register.submitRequest = function() {
         'interests': [],
         'partnerPreferences': [],
         'photos': [],
-        'matches': []
+        'matches': [],
+        'permissionLvl': 1 // 0: restricted user, 1: basic user, 2: admin
 
     };
 
@@ -60,10 +61,22 @@ Register.submitRequest = function() {
         console.log('photos', data.photos);
         LH.DataProvider.register(data).then(
             (result) => {
+                result = JSON.parse(result);
                 console.log('result:', result);
 
-                let data = JSON.parse(result);
-                nav.navigate('#/profile/' + data.userId);
+                // Because an sql INSERT response does not respond with the user object, but a response object
+                let responseData = { 'ID': result.data.insertId, 'permissionLvl': data.permissionLvl };
+                console.log('responseData', responseData);
+                // Set server response data to user object, only using the user id and permissionLvl
+                LH.DataProvider.activeUser = new User();
+                LH.DataProvider.activeUser.set(responseData);
+                LH.DataProvider.saveActiveUser();
+
+                // Save new token in local storage
+                LH.DataProvider.saveToken(result._token);
+
+                console.log('Active user id: ' + LH.DataProvider.activeUser.id, 'permissionLvl: ' + LH.DataProvider.activeUser.permission);
+                nav.navigate('#/profile/' + LH.DataProvider.activeUser.id);
 
             },
             (err) => {

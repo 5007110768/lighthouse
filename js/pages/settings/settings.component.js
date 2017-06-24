@@ -26,3 +26,7 @@ Settings.load = function() {
     });
 };
 
+Settings.logOut = function() {
+    localStorage.removeItem('token');
+    nav.navigate('#/login');
+};

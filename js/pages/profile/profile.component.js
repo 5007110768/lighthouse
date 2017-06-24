@@ -14,13 +14,11 @@ Profile.load = function(userId) {
     LH.navigation.titleBar.allowBack = false;
     LH.navigation.titleBar.allowSettings = true;
 
-    // TODO: retrieve this data through the DataProvider > with a placeholder from localStorage for fast rendering
     Profile.data = new Vue({
         el: '#profile-page',
         data: new User()
     });
 
-    // TODO: DataProvider.getUserProfile needs to return in the DataProvider, then return a new promise to be thennable
     LH.DataProvider.getUserProfile(userId).then(
         (result) => {
             let data = JSON.parse(result);
