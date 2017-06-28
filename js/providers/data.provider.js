@@ -7,10 +7,19 @@ let _token;
 LH.DataProvider.activeUser = null;
 
 LH.DataProvider.loadActiveUser = function() {
-    let data = JSON.parse(localStorage.getItem('user'));
-    LH.DataProvider.activeUser = new User();
-    LH.DataProvider.activeUser.id = data.id;
-    LH.DataProvider.activeUser.permission = data.permission;
+    return new Promise((resolve, reject) => {
+        let data = JSON.parse(localStorage.getItem('user'));
+
+        if (!data.id || !data.permission) reject('Please log in');
+
+        LH.DataProvider.activeUser = new User();
+        LH.DataProvider.activeUser.id = data.id;
+        LH.DataProvider.activeUser.permission = data.permission;
+
+        resolve('Using local user data as active user');
+    });
+
+
 };
 
 LH.DataProvider.saveActiveUser = function() {
@@ -116,6 +125,25 @@ LH.DataProvider.deleteAccount = function(userId) {
     let request = {
         url: baseURL + '/delete-account?userId=' + userId,
         method: 'GET'
+    };
+
+    return LH.ComProvider.request(request);
+};
+
+LH.DataProvider.getChat = function(userId, partnerId) {
+    let request = {
+        url: baseURL + '/chat?userId=' + userId + '&partnerId=' + partnerId,
+        method: 'GET'
+    };
+
+    return LH.ComProvider.request(request);
+};
+
+LH.DataProvider.sendMessage = function(data) {
+    let request = {
+        url: baseURL + '/send-message',
+        method: 'POST',
+        data: JSON.stringify(data)
     };
 
     return LH.ComProvider.request(request);

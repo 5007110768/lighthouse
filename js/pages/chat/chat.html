@@ -1,40 +1,22 @@
 <div id="chat-page">
     <header>
-        <h1>{{ name }}</h1>
+        <h1>[Partner name]</h1>
         <img alt="profile image"/>
     </header>
 
     <div class="content">
-
-        <div class="messages">
-            <div class="message">
+        <em>{{ new Date(conversation.creationDate).toUTCString() }}</em>
+        <div class="messages" v-for="msg in conversation.messages" track-by="msg.creationDate">
+            <div class="message" v-bind:class="{'owner': isOwner(msg.userId)}">
                 <div class="text">
-                {{ message }}
-                </div>
-            </div>
-
-            <div class="message owner">
-                <div class="text">
-                {{ message }}
-                </div>
-            </div>
-
-            <div class="message">
-                <div class="text">
-                {{ message }}
-                </div>
-            </div>
-
-            <div class="message owner">
-                <div class="text">
-                {{ message }}
+                    {{ msg.text }}
                 </div>
             </div>
         </div>
 
         <div class="type-area">
-            <textarea placeholder=". . ."></textarea>
-            <button class="send-msg-btn"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+            <textarea v-model:value="requestMsg" placeholder=". . ."></textarea>
+            <button class="send-msg-btn" onclick="Chat.sendMessage(Chat.data.conversation.partnerId)"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
         </div>
 
     </div>

@@ -14,7 +14,53 @@ Chat.load = function(userId, partnerId) {
     LH.navigation.titleBar.allowBack = true;
     LH.navigation.titleBar.allowSettings = true;
 
+    Chat.data = new Vue({
+        el: '#chat-page',
+        data: {
+            'conversation': [],
+            'requestMsg': ''
+        },
+        methods: {
+            isOwner: function(userId) {
+                return userId == LH.DataProvider.activeUser.id ? true : false;
+            }
+        }
+    });
+
+    LH.DataProvider.getChat(userId, partnerId).then(
+        (result) => {
+            result = JSON.parse(result);
+            console.log('result: ', result);
+
+            Chat.data.conversation = new Conversation();
+            Chat.data.conversation.set(result);
+            console.log(Login.data);
+        },
+        (err) => {
+            alert('Unable to retrieve chat messages: ', err);
+            throw err;
+        }
+    );
+
+    Chat.sendMessage = function(partnerId) {
+        let msg = {
+            'userId': LH.DataProvider.activeUser.id,
+            'creationDate': new Date(),
+            'partnerId': partnerId,
+            'text': Chat.data.requestMsg
+        };
+
+        LH.DataProvider.sendMessage(msg).then(
+            (result) => {
+                console.log('result', result);
+            },
+            (err) => {
+                throw err;
+            }
+        );
 
 
+        console.log(msg);
+
+    }
 };
-

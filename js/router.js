@@ -6,7 +6,12 @@ nav.activePage = null;
 // Define routes
 let routes = {
     '/': function(){
-        LH.DataProvider.loadActiveUser();
+        LH.DataProvider.loadActiveUser().then(
+            (result) => {
+                console.log(result);
+            },
+            (err) => window.location.href = '#/login'
+        );
         console.log('active user: ', LH.DataProvider.activeUser);
 
         if (LH.DataProvider.activeUser) {
