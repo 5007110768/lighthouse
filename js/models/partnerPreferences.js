@@ -1,7 +1,7 @@
 let PartnerPreferences = function(gender, travel, sports, movies, goingOut) {
     let self = this;
 
-    this.gender = travel; // Enum of m, f, or mf
+    this.gender = gender; // Enum of m, f, or mf
     this.travel = travel;
     this.sports = sports;
     this.movies = movies;

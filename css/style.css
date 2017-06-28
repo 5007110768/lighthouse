@@ -328,6 +328,17 @@ h1, h2, h3, h4 {
       color: #009cff; }
       #settings-page .content h1 i {
         margin-right: 10px; }
+    #settings-page .content .partner-preferences {
+      display: flex;
+      flex-direction: column;
+      -webkit-flex-direction: column; }
+      #settings-page .content .partner-preferences div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        -webkit-justify-content: space-between;
+        width: 100%;
+        margin-bottom: 10px; }
     #settings-page .content .personal-settings div {
       display: inline;
       flex-direction: column;

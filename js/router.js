@@ -36,8 +36,17 @@ let routes = {
         );
     },
 
-    '/chat': function() {
-        Chat.init();
+    'profile/:userId/chat/:partnerId': function(userId, partnerId) {
+
+        LH.DataProvider.isLoggedIn(userId).then(
+            (result) => {
+                console.log(result);
+                Chat.init(userId, partnerId);
+            },
+            (err) => { console.log(err) }
+        );
+
+
     },
 
     '/profile/:userId/settings': function(userId) {

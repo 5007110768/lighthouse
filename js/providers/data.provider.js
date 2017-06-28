@@ -95,6 +95,11 @@ LH.DataProvider.getUserProfile = function(userId) {
     return LH.ComProvider.request(request);
 };
 
+// Change partner preferences
+LH.DataProvider.changePartnerPreferences = function(data) {
+
+};
+
 // Change account settings
 LH.DataProvider.changeAccountSettings = function(data) {
     let request = {

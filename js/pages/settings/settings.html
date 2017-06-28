@@ -3,17 +3,31 @@
         <h1><i class="fa fa-list-ul" aria-hidden="true"></i>Partner voorkeuren</h1>
 
         <div class="partner-preferences">
-            <label>Reizen</label>
-            <input type="checkbox" v-model:checked="interests.travel"/>
-
-            <label>Sporten</label>
-            <input type="checkbox" v-model:checked="interests.sports"/>
-
-            <label>Films</label>
-            <input type="checkbox" v-model:checked="interests.movies"/>
-
-            <label>Uitgaan</label>
-            <input type="checkbox" v-model:checked="interests.goingOut"/>
+            <div>
+                <label>Sekse</label>
+                <select v-model:value="partnerPreferences.gender" onchange="Settings.changePartnerPreferences()">
+                    <option selected disabled>Ik val op:</option>
+                    <option value="m">Mannen</option>
+                    <option value="f">Vrouwen</option>
+                    <option value="mf">Mannen en vrouwen</option>
+                </select>
+            </div>
+            <div>
+                <label>Reizen</label>
+                <input type="checkbox" v-model:checked="partnerPreferences.travel" onchange="Settings.changePartnerPreferences()"/>
+            </div>
+            <div>
+                <label>Sporten</label>
+                <input type="checkbox" v-model:checked="partnerPreferences.sports" onchange="Settings.changePartnerPreferences()"/>
+            </div>
+            <div>
+                <label>Films</label>
+                <input type="checkbox" v-model:checked="partnerPreferences.movies" onchange="Settings.changePartnerPreferences()"/>
+            </div>
+            <div>
+                <label>Uitgaan</label>
+                <input type="checkbox" v-model:checked="partnerPreferences.goingOut" onchange="Settings.changePartnerPreferences()"/>
+            </div>
         </div>
 
         <button>Opslaan</button>

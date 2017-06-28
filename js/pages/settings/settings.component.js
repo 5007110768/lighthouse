@@ -17,7 +17,7 @@ Settings.load = function(userId) {
     Settings.data = new Vue({
         el: '#settings-page',
         data: {
-            'interests': new Interests(),
+            'partnerPreferences': new PartnerPreferences(),
             'email': '',
             'oldPassword': '',
             'newPassword': '',
@@ -30,7 +30,8 @@ Settings.load = function(userId) {
             let data = JSON.parse(result);
             console.log(data);
             // Set server response data to user object
-            Settings.data.interests.set(data[0]);
+            Settings.data.partnerPreferences.set(data[0]);
+            Settings.data.partnerPreferences.gender;
             Settings.data.email = data[0].email;
             console.log(Settings.data);
         },
@@ -38,10 +39,17 @@ Settings.load = function(userId) {
     );
 };
 
-Settings.savePartnerPreferences = function() {
-    console.log('Settings.savePartnerPreferences');
+Settings.changePartnerPreferences = function() {
+    console.log('Settings.changePartnerPreferences');
 
+    /*DataProvider.savePartnerPreferences().then(
+        (result) => {
 
+        },
+        (err) => {
+
+        }
+    )*/
 
 };
 

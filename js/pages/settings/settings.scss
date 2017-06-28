@@ -21,7 +21,19 @@
     }
 
     .partner-preferences {
+        display: flex;
+        flex-direction: column;
+        -webkit-flex-direction: column;
 
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          -webkit-justify-content: space-between;
+          width: 100%;
+          margin-bottom: 10px;
+
+        }
     }
 
     .personal-settings {
